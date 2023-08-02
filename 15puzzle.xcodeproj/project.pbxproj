@@ -14,6 +14,8 @@
 		2A5F8EC42A798265008B51FD /* _5puzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EC32A798265008B51FD /* _5puzzleTests.swift */; };
 		2A5F8ECE2A798265008B51FD /* _5puzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8ECD2A798265008B51FD /* _5puzzleUITests.swift */; };
 		2A5F8ED02A798265008B51FD /* _5puzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8ECF2A798265008B51FD /* _5puzzleUITestsLaunchTests.swift */; };
+		2A5F8EDD2A799990008B51FD /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EDC2A799990008B51FD /* State.swift */; };
+		2ACA02E62A7ACC8E002F2EF9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA02E52A7ACC8E002F2EF9 /* Views.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,9 @@
 		2A5F8EC92A798265008B51FD /* 15puzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 15puzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5F8ECD2A798265008B51FD /* _5puzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5puzzleUITests.swift; sourceTree = "<group>"; };
 		2A5F8ECF2A798265008B51FD /* _5puzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5puzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2A5F8EDC2A799990008B51FD /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		2ACA02E52A7ACC8E002F2EF9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		2ACA02E72A7ADAE9002F2EF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 		2A5F8EA62A798264008B51FD = {
 			isa = PBXGroup;
 			children = (
+				2ACA02E72A7ADAE9002F2EF9 /* README.md */,
 				2A5F8EB12A798264008B51FD /* 15puzzle */,
 				2A5F8EC22A798265008B51FD /* 15puzzleTests */,
 				2A5F8ECC2A798265008B51FD /* 15puzzleUITests */,
@@ -96,8 +102,10 @@
 			children = (
 				2A5F8EB22A798264008B51FD /* _5puzzleApp.swift */,
 				2A5F8EB42A798264008B51FD /* ContentView.swift */,
+				2ACA02E52A7ACC8E002F2EF9 /* Views.swift */,
 				2A5F8EB62A798265008B51FD /* Assets.xcassets */,
 				2A5F8EB82A798265008B51FD /* Preview Content */,
+				2A5F8EDC2A799990008B51FD /* State.swift */,
 			);
 			path = 15puzzle;
 			sourceTree = "<group>";
@@ -257,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACA02E62A7ACC8E002F2EF9 /* Views.swift in Sources */,
 				2A5F8EB52A798264008B51FD /* ContentView.swift in Sources */,
 				2A5F8EB32A798264008B51FD /* _5puzzleApp.swift in Sources */,
+				2A5F8EDD2A799990008B51FD /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"15puzzle/Preview Content\"";
+				DEVELOPMENT_TEAM = BFX578S5ST;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"15puzzle/Preview Content\"";
+				DEVELOPMENT_TEAM = BFX578S5ST;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
