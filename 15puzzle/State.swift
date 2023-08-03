@@ -22,7 +22,7 @@ struct State {
     }
     
     private mutating func scrambleBoard() {
-        for _ in 0..<100 {
+        for _ in 0..<250 {
             let directions: [Direction] = [.UP, .DOWN, .LEFT, .RIGHT]
             let randomIndex = Int.random(in: 0..<directions.count)
             move(direction: directions[randomIndex])
