@@ -28,7 +28,7 @@ struct GamePiece: View {
         if number == 16 { EmptyPiece()}
         else {NumberPiece(number: number)}
     }
-
+    
 }
 
 struct NumberPiece: View {

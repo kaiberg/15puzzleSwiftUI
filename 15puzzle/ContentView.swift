@@ -45,12 +45,12 @@ struct ContentView: View {
             }
         )
     }
-
+    
     
     private func getDirection(from translation: CGSize) -> Direction {
         let verticalThreshold = abs(translation.height)
         let horizontalThreshold = abs(translation.width)
-
+        
         if verticalThreshold > horizontalThreshold {
             return translation.height > 0 ? Direction.DOWN : Direction.UP
         } else {

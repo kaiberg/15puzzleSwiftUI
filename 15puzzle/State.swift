@@ -16,7 +16,7 @@ struct State {
     private var wrongCount: Int = 0
     private var emptyLocation: [Int] = []
     var hasWon: Bool = false
-        
+    
     init() {
         self.Initialize()
     }
@@ -32,10 +32,10 @@ struct State {
             scrambleBoard()
         }
     }
-
+    
     mutating func move(direction: Direction) {
         var adjacentXY: [Int] = []
-
+        
         switch direction {
         case .DOWN:
             adjacentXY = [-1, 0]
@@ -46,27 +46,27 @@ struct State {
         case .RIGHT:
             adjacentXY = [0, -1]
         }
-
+        
         let adjacent = [
             emptyLocation[0] + adjacentXY[0],
             emptyLocation[1] + adjacentXY[1]
         ]
-
+        
         if !isPieceValid(XY: adjacent) {
             return
         }
-
+        
         let temp = self.board[emptyLocation[0]][emptyLocation[1]]
         self.board[emptyLocation[0]][emptyLocation[1]] = self.board[adjacent[0]][adjacent[1]]
         self.board[adjacent[0]][adjacent[1]] = temp
-
+        
         let n = self.board[emptyLocation[0]][emptyLocation[1]]
         let netChange = netPieceChange(old: emptyLocation, new: adjacent, number: temp) +
-                        netPieceChange(old: adjacent, new: emptyLocation, number: n)
-
+        netPieceChange(old: adjacent, new: emptyLocation, number: n)
+        
         self.wrongCount += netChange
         self.emptyLocation = adjacent
-
+        
         self.hasWon = self.wrongCount == 0
     }
     
@@ -79,7 +79,7 @@ struct State {
         ]
         self.wrongCount = 0
         self.emptyLocation = [3,3]
-
+        
         for i in 0..<board.count {
             for j in 0..<board[i].count {
                 if !isCorrect(position: [i, j], number: board[i][j]) {
@@ -90,7 +90,7 @@ struct State {
         
         self.hasWon = wrongCount == 0
         
-
+        
         scrambleBoard()
     }
 }
@@ -102,7 +102,7 @@ func netPieceChange(old: [Int], new: [Int], number : Int) -> Int {
     if(!oldIsCorrect && newIsCorrect) {
         return 1;
     }
-
+    
     if(oldIsCorrect && !newIsCorrect) {
         return -1;
     }
@@ -117,7 +117,7 @@ func isPieceValid(XY: [Int]) -> Bool {
 func isCorrect(position: [Int], number: Int) -> Bool {
     let row = position[0]
     let column = position[1]
-
+    
     return row * 4 + column + 1 == number
 }
 
