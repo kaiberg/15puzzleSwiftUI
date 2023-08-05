@@ -1,26 +1,14 @@
 //
-//  ContentView.swift
+//  Views.swift
 //  15puzzle
 //
-//  Created by kai delay on 01/08/2023.
+//  Created by kai delay on 02/08/2023.
 //
 
+import Foundation
 import SwiftUI
 
-class PuzzleState: ObservableObject {
-    @Published var state = State()
-    @Published var lastGestureTime: Date = Date()
-    
-    func move(direction: Direction) {
-        state.move(direction: direction)
-    }
-    
-    func reset() {
-        state.Initialize()
-    }
-}
-
-struct ContentView: View {
+struct Game: View {
     @StateObject private var puzzleState = PuzzleState()
     
     var body: some View {
@@ -59,10 +47,56 @@ struct ContentView: View {
     }
 }
 
+struct GameRow: View {
+    var pieces: [Int]
+    
+    var body: some View {
+        HStack {
+            ForEach(pieces, id: \.self) { piece in
+                GamePiece(number: piece)
+            }
+            
+        }
+    }
+}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct GamePiece: View {
+    var number: Int
+    
+    var body: some View {
+        if number == 16 { EmptyPiece()}
+        else {NumberPiece(number: number)}
+    }
+    
+}
+
+struct NumberPiece: View {
+    var number: Int
+    
+    var body: some View {
+        ZStack {
+            Color.white
+                .frame(width: 80, height: 80)
+                .border(Color.black, width: 2)
+            
+            Text(String(number))
+                .font(.title)
+                .foregroundColor(.black)
+        }
+    }
+}
+
+struct EmptyPiece: View {
+    var body: some View {
+        ZStack {
+            Color.white
+                .frame(width: 80, height: 80)
+                .border(Color.white, width: 2)
+            
+            Text("")
+                .font(.title)
+                .foregroundColor(.black)
+        }
     }
 }
 
