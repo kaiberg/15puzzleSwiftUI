@@ -3,7 +3,14 @@
 Welcome to the 15 Puzzle SwiftUI app, a classic sliding puzzle game brought to the VisionOS platform.
 
 ## Showcase
-![Gameplay](/img/showcase.gif)
+### Gameplay
+![Gameplay video](/img/showcase.gif)
+
+### Controls
+![Controls video](/img/controls.gif)
+
+### Options
+![Options video](/img/options.gif)
 
 ## Installation
 Follow these steps to install and run the app:
@@ -21,3 +28,6 @@ Follow these steps to install and run the app:
 4. **Select VisionOS Simulator**: In Xcode, go to the "Product" menu, then select "Destination." Choose the "VisionOS Simulator" option, and select the desired device (e.g., "Apple Vision Pro").
 
 5. **Run the App**: Press the "Run" button in Xcode, and the app will build and launch in the VisionOS simulator.
+
+## Figma
+The design docs for this project can be found at [Figma](https://www.figma.com/file/qu61pQknJMOR1DrSB9xc4H/15-Puzzle?type=design&mode=design&t=PZChP2l6QOcX7tcV-1).

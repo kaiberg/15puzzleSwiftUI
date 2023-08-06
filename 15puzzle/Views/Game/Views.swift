@@ -13,15 +13,25 @@ struct Game: View {
     
     var body: some View {
         VStack {
-            ForEach(state.game.board, id: \.self) { row in
-                GameRow(pieces: row, options: state.options)
+            topControls
+            
+            VStack {
+                ForEach(state.game.board, id: \.self) { row in
+                    GameRow(pieces: row, options: state.options)
+                }
             }
+            
+            bottomControls
         }
-        .alert("You Won!", isPresented: $state.game.hasWon) {
-            Button("restart", role: .cancel) {
-                state.reset()
-            }
-        }
+        .frame(width: 370, height: 500)
+        .alert("You Won!", isPresented: $state.game.hasWon, actions: {
+            Button(
+                "Play again",
+                action: { state.reset() }
+            )
+        }, message: {
+            Text("it took you \(state.game.moves) moves")
+        })
         .gesture(DragGesture()
             .onChanged { value in
                 if Date().timeIntervalSince(state.lastGestureTime) >= 0.5 {
@@ -32,6 +42,56 @@ struct Game: View {
                 }
             }
         )
+    }
+    
+    var topControls: some View {
+        HStack {
+            Button {
+                state.reset()
+            } label: {
+                Text("New Game")
+            }
+            .tint(state.options.empty)
+            .overlay(
+                RoundedRectangle(cornerRadius: 25)
+                    .stroke(Color.gray, lineWidth: 2))
+            Spacer()
+            
+            ZStack(alignment: .trailing) {
+                state.options.empty
+                HStack {
+                    VStack(alignment: .trailing) {
+                        Text("MOVES")
+                        Text("\(state.game.moves)")
+                    }
+                    .padding(EdgeInsets(top:16, leading: 32, bottom: 8, trailing: 0))
+                    
+                    
+                    VStack(alignment: .trailing) {
+                        Text("TIME")
+                        Text("\(state.time)s")
+                    }
+                    .padding(EdgeInsets(top:16, leading: 32, bottom: 8, trailing: 8))
+                    
+                }
+            }
+            .cornerRadius(20)
+            .fixedSize(horizontal: true, vertical: true)
+        }
+        
+    }
+    var bottomControls: some View {
+        Button {
+            state.pause()
+        } label: {
+            Text("PAUSE")
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+        }
+        .tint(state.options.empty)
+        .overlay(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.gray, lineWidth: 2))
     }
     
     
@@ -78,7 +138,8 @@ struct GamePiece: View {
 }
 
 #Preview {
-    NumberPiece(number: 2)
+    //    NumberPiece(number: 2)
+    Game(state: PuzzleState())
 }
 
 struct NumberPiece: View {
@@ -106,7 +167,7 @@ struct EmptyPiece: View {
             color
                 .frame(width: 80, height: 80)
                 .cornerRadius(20)
-        
+            
         }
         
     }}

@@ -32,6 +32,7 @@ struct GameState {
     var board: [[piece]] = []
     private var wrongCount: Int = 0
     private var emptyLocation: [Int] = []
+    var moves = 0
     var hasWon: Bool = false
     var difficulty: Difficulty = .medium
     
@@ -46,6 +47,7 @@ struct GameState {
             let randomIndex = Int.random(in: 0..<directions.count)
             move(direction: directions[randomIndex])
         }
+        moves = 0
         
         if(hasWon) {
             scrambleBoard()
@@ -93,6 +95,7 @@ struct GameState {
         self.emptyLocation = adjacent
         
         self.hasWon = self.wrongCount == 0
+        moves+=1
     }
     
     mutating func Initialize() {
