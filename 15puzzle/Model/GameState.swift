@@ -11,18 +11,37 @@ enum Direction {
     case RIGHT
 }
 
-struct State {
-    var board: [[Int]] = []
+enum Difficulty {
+    case hard
+    case medium
+    case easy
+}
+
+enum PieceType {
+    case correct
+    case wrong
+    case empty
+}
+
+struct piece : Hashable {
+    var number: Int = 0
+    var type: PieceType =  .wrong
+}
+
+struct GameState {
+    var board: [[piece]] = []
     private var wrongCount: Int = 0
     private var emptyLocation: [Int] = []
     var hasWon: Bool = false
+    var difficulty: Difficulty = .medium
     
     init() {
         self.Initialize()
     }
     
     private mutating func scrambleBoard() {
-        for _ in 0..<250 {
+        let amount = difficultyToScrambleAmount(difficulty: difficulty)
+        for _ in 0..<amount {
             let directions: [Direction] = [.UP, .DOWN, .LEFT, .RIGHT]
             let randomIndex = Int.random(in: 0..<directions.count)
             move(direction: directions[randomIndex])
@@ -61,9 +80,15 @@ struct State {
         self.board[adjacent[0]][adjacent[1]] = temp
         
         let n = self.board[emptyLocation[0]][emptyLocation[1]]
-        let netChange = netPieceChange(old: emptyLocation, new: adjacent, number: temp) +
-        netPieceChange(old: adjacent, new: emptyLocation, number: n)
+        let a = netPieceChange(old: emptyLocation, new: adjacent, number: temp.number)
+        let b = netPieceChange(old: adjacent, new: emptyLocation, number: n.number)
+        let netChange =  a + b
         
+        if(b == 1) {
+            board[emptyLocation[0]][emptyLocation[1]].type = .correct
+        } else if(b == -1) {
+            board[emptyLocation[0]][emptyLocation[1]].type = .wrong
+        }
         self.wrongCount += netChange
         self.emptyLocation = adjacent
         
@@ -71,18 +96,24 @@ struct State {
     }
     
     mutating func Initialize() {
-        self.board = [
-            [1,2,3,4],
-            [5,6,7,8],
-            [9,10,11,12],
-            [13,14,15,16]
-        ]
+        self.board = []
+        var counter = 1
+
+        for _ in 0..<4 {
+            var row = [piece]()
+            for _ in 0..<4 {
+                let correct = (counter == 16) ? PieceType.empty : .correct
+                row.append(piece(number: counter, type: correct))
+                counter += 1
+            }
+            self.board.append(row)
+        }
         self.wrongCount = 0
         self.emptyLocation = [3,3]
         
         for i in 0..<board.count {
             for j in 0..<board[i].count {
-                if !isCorrect(position: [i, j], number: board[i][j]) {
+                if !isCorrect(position: [i, j], number: board[i][j].number) {
                     wrongCount += 1
                 }
             }
@@ -92,6 +123,17 @@ struct State {
         
         
         scrambleBoard()
+    }
+}
+
+func difficultyToScrambleAmount(difficulty: Difficulty) -> Int {
+    switch difficulty {
+    case .easy:
+        return 70;
+    case .medium:
+        return 150;
+    case .hard:
+        return 250;
     }
 }
 
@@ -126,6 +168,6 @@ func isValid(position: Int, min: Int, max: Int) -> Bool {
 }
 
 
-func InitialState() -> State {
-    return State()
+func InitialState() -> GameState {
+    return GameState()
 }

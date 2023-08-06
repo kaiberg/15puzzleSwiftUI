@@ -9,26 +9,26 @@ import Foundation
 import SwiftUI
 
 struct Game: View {
-    @StateObject private var puzzleState = PuzzleState()
+    @StateObject var state: PuzzleState
     
     var body: some View {
         VStack {
-            ForEach(puzzleState.state.board, id: \.self) { row in
-                GameRow(pieces: row)
+            ForEach(state.game.board, id: \.self) { row in
+                GameRow(pieces: row, options: state.options)
             }
         }
-        .alert("You Won!", isPresented: $puzzleState.state.hasWon) {
+        .alert("You Won!", isPresented: $state.game.hasWon) {
             Button("restart", role: .cancel) {
-                puzzleState.reset()
+                state.reset()
             }
         }
         .gesture(DragGesture()
             .onChanged { value in
-                if Date().timeIntervalSince(puzzleState.lastGestureTime) >= 0.5 {
+                if Date().timeIntervalSince(state.lastGestureTime) >= 0.5 {
                     let gestureTranslation = value.translation
                     let direction = getDirection(from: gestureTranslation)
-                    puzzleState.move(direction: direction)
-                    puzzleState.lastGestureTime = Date()
+                    state.move(direction: direction)
+                    state.lastGestureTime = Date()
                 }
             }
         )
@@ -48,12 +48,17 @@ struct Game: View {
 }
 
 struct GameRow: View {
-    var pieces: [Int]
+    var pieces: [piece]
+    var options: OptionState
     
     var body: some View {
         HStack {
-            ForEach(pieces, id: \.self) { piece in
-                GamePiece(number: piece)
+            ForEach(pieces, id: \.self.number) { piece in
+                let color = (piece.type == .empty) ? options.empty
+                : (piece.type == .correct)
+                ? options.correct
+                : options.wrong
+                GamePiece(number: piece.number, type: piece.type, color: color)
             }
             
         }
@@ -62,41 +67,46 @@ struct GameRow: View {
 
 struct GamePiece: View {
     var number: Int
+    var type: PieceType
+    var color: Color
     
     var body: some View {
-        if number == 16 { EmptyPiece()}
-        else {NumberPiece(number: number)}
+        if type == .empty { EmptyPiece(color: color)}
+        else {NumberPiece(number: number, color: color)}
     }
     
 }
 
+#Preview {
+    NumberPiece(number: 2)
+}
+
 struct NumberPiece: View {
     var number: Int
+    var color = Color.red
     
     var body: some View {
         ZStack {
-            Color.white
+            color
                 .frame(width: 80, height: 80)
-                .border(Color.black, width: 2)
+                .cornerRadius(20)
             
             Text(String(number))
-                .font(.title)
-                .foregroundColor(.black)
+                .font(.extraLargeTitle)
+                .foregroundColor(.white)
         }
     }
 }
 
 struct EmptyPiece: View {
+    var color = Color.white
+    
     var body: some View {
         ZStack {
-            Color.white
+            color
                 .frame(width: 80, height: 80)
-                .border(Color.white, width: 2)
-            
-            Text("")
-                .font(.title)
-                .foregroundColor(.black)
+                .cornerRadius(20)
+        
         }
-    }
-}
-
+        
+    }}

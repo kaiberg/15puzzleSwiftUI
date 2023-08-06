@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A5B7CDA2A7EAB7D00215CDE /* OptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B7CD92A7EAB7D00215CDE /* OptionState.swift */; };
+		2A5B7CDE2A7EB44900215CDE /* PuzzleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B7CDD2A7EB44900215CDE /* PuzzleState.swift */; };
 		2A5F8EB32A798264008B51FD /* _5puzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EB22A798264008B51FD /* _5puzzleApp.swift */; };
 		2A5F8EB52A798264008B51FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EB42A798264008B51FD /* ContentView.swift */; };
 		2A5F8EB72A798265008B51FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A5F8EB62A798265008B51FD /* Assets.xcassets */; };
@@ -14,7 +16,7 @@
 		2A5F8EC42A798265008B51FD /* _5puzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EC32A798265008B51FD /* _5puzzleTests.swift */; };
 		2A5F8ECE2A798265008B51FD /* _5puzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8ECD2A798265008B51FD /* _5puzzleUITests.swift */; };
 		2A5F8ED02A798265008B51FD /* _5puzzleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8ECF2A798265008B51FD /* _5puzzleUITestsLaunchTests.swift */; };
-		2A5F8EDD2A799990008B51FD /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EDC2A799990008B51FD /* State.swift */; };
+		2A5F8EDD2A799990008B51FD /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EDC2A799990008B51FD /* GameState.swift */; };
 		2A606BBB2A7E89D900FEF16A /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A606BBA2A7E89D900FEF16A /* Options.swift */; };
 		2ACA02E62A7ACC8E002F2EF9 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACA02E52A7ACC8E002F2EF9 /* Views.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A5B7CD92A7EAB7D00215CDE /* OptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionState.swift; sourceTree = "<group>"; };
+		2A5B7CDD2A7EB44900215CDE /* PuzzleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleState.swift; sourceTree = "<group>"; };
 		2A5F8EAF2A798264008B51FD /* 15puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 15puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5F8EB22A798264008B51FD /* _5puzzleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5puzzleApp.swift; sourceTree = "<group>"; };
 		2A5F8EB42A798264008B51FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,7 +51,7 @@
 		2A5F8EC92A798265008B51FD /* 15puzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 15puzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A5F8ECD2A798265008B51FD /* _5puzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5puzzleUITests.swift; sourceTree = "<group>"; };
 		2A5F8ECF2A798265008B51FD /* _5puzzleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5puzzleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2A5F8EDC2A799990008B51FD /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		2A5F8EDC2A799990008B51FD /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		2A606BBA2A7E89D900FEF16A /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		2ACA02E52A7ACC8E002F2EF9 /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		2ACA02E72A7ADAE9002F2EF9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -78,6 +82,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5B7CD82A7EAB6C00215CDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A5F8EDC2A799990008B51FD /* GameState.swift */,
+				2A5B7CD92A7EAB7D00215CDE /* OptionState.swift */,
+				2A5B7CDD2A7EB44900215CDE /* PuzzleState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2A5F8EA62A798264008B51FD = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +116,11 @@
 		2A5F8EB12A798264008B51FD /* 15puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				2A5B7CD82A7EAB6C00215CDE /* Model */,
 				2A606BB72A7E87BD00FEF16A /* Views */,
 				2A5F8EB22A798264008B51FD /* _5puzzleApp.swift */,
 				2A5F8EB62A798265008B51FD /* Assets.xcassets */,
 				2A5F8EB82A798265008B51FD /* Preview Content */,
-				2A5F8EDC2A799990008B51FD /* State.swift */,
 			);
 			path = 15puzzle;
 			sourceTree = "<group>";
@@ -294,9 +308,11 @@
 			files = (
 				2ACA02E62A7ACC8E002F2EF9 /* Views.swift in Sources */,
 				2A5F8EB52A798264008B51FD /* ContentView.swift in Sources */,
+				2A5B7CDA2A7EAB7D00215CDE /* OptionState.swift in Sources */,
 				2A5F8EB32A798264008B51FD /* _5puzzleApp.swift in Sources */,
+				2A5B7CDE2A7EB44900215CDE /* PuzzleState.swift in Sources */,
 				2A606BBB2A7E89D900FEF16A /* Options.swift in Sources */,
-				2A5F8EDD2A799990008B51FD /* State.swift in Sources */,
+				2A5F8EDD2A799990008B51FD /* GameState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +479,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,6 +513,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
