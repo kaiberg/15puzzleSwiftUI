@@ -7,27 +7,16 @@
 
 import SwiftUI
 
-class PuzzleState: ObservableObject {
-    @Published var state = State()
-    @Published var lastGestureTime: Date = Date()
-    
-    func move(direction: Direction) {
-        state.move(direction: direction)
-    }
-    
-    func reset() {
-        state.Initialize()
-    }
-}
-
 struct ContentView: View {
+    var state = PuzzleState()
+    
     var body: some View {
         TabView {
-            Game()
+            Game(state: state)
                 .tabItem {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }
-            Options()
+            Options(state: state)
                 .tabItem {
                     Label("Options", systemImage: "gearshape.fill")
                 }
