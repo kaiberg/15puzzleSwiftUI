@@ -18,9 +18,14 @@ struct Options: View {
                     Text("Medium").tag(Difficulty.medium)
                     Text("Hard").tag(Difficulty.hard)
                 }
+                
                 ColorPicker("Empty", selection: $state.options.empty)
                 ColorPicker("Correct", selection: $state.options.correct)
                 ColorPicker("Incorrect", selection: $state.options.wrong)
+                
+                Toggle(isOn: $state.options.saveGameStatistics) {
+                    Text("Save History")
+                }
             }
             Section(header: Text("Previews")) {
                 HStack{
@@ -31,9 +36,6 @@ struct Options: View {
             }
             
         }
-        
-        
-        
     }
 }
 

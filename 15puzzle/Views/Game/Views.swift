@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Game: View {
     @StateObject var state: PuzzleState
+     @Environment(\.modelContext) private var context
     
     var body: some View {
         VStack {
@@ -27,7 +28,10 @@ struct Game: View {
         .alert("You Won!", isPresented: $state.game.hasWon, actions: {
             Button(
                 "Play again",
-                action: { state.reset() }
+                action: {
+                    state.saveGame(context: context)
+                    state.reset()
+                }
             )
         }, message: {
             Text("it took you \(state.game.moves) moves")

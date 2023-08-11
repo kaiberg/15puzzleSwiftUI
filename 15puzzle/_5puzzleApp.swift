@@ -13,5 +13,6 @@ struct _5puzzleApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [GameRecord.self])
     }
 }

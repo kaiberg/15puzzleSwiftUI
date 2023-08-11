@@ -16,6 +16,10 @@ struct ContentView: View {
                 .tabItem {
                     Label("Game", systemImage: "gamecontroller.fill")
                 }
+            History()
+                .tabItem {
+                    Label("History", systemImage: "clock.fill")
+                }
             Options(state: state)
                 .tabItem {
                     Label("Options", systemImage: "gearshape.fill")
