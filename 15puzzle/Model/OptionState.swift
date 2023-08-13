@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+@Observable
 class OptionState {
     var correct: Color
     var empty: Color

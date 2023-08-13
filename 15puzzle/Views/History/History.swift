@@ -26,6 +26,7 @@ enum DateFilter {
 struct History: View {
     @State private var difficultyFilter: DifficultyFilter = .none
     @State private var dateFilter: DateFilter = .none
+    @Bindable var options: OptionState
     
     // dynamic queries are not possible yet
     @Query private var games: [GameRecord]
@@ -59,8 +60,10 @@ struct History: View {
             
             List(games) { game in
                 GameRecordRow(record: game)
-            }
-        }.padding(.all)
+                    .listRowBackground(options.empty)
+            }.scrollContentBackground(.hidden)
+        }
+        .padding(.all)
     }
 }
 
@@ -85,16 +88,18 @@ struct GameRecordRow: View {
     
     private func getIcon(difficulty : Difficulty) -> String {
         switch difficulty {
-        case .easy:
+        case Difficulty.easy:
             return "face.smiling"
-        case .medium:
+        case Difficulty.medium:
             return "sparkles"
-        case .hard:
+        case Difficulty.hard:
             return "flame.fill"
+        default:
+            return "questionmark.circle.fill"
         }
     }
 }
 
 #Preview {
-    History()
+    History(options: PuzzleState().options)
 }

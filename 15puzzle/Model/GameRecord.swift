@@ -9,16 +9,19 @@ import Foundation
 import SwiftData
 
 @Model
-class GameRecord {
+final class GameRecord {
     var date: Date
     var moves: Int
     var timeTaken: Int
-    var difficulty: Difficulty
+    private var _difficulty: String
+    var difficulty: Difficulty {
+        return Difficulty(rawValue: self._difficulty) ?? .easy
+    }
     
     init(date: Date, moves: Int, timeTaken: Int, difficulty: Difficulty) {
         self.date = date
         self.moves = moves
         self.timeTaken = timeTaken
-        self.difficulty = difficulty
+        self._difficulty = difficulty.rawValue
     }
 }

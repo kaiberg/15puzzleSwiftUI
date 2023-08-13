@@ -9,15 +9,16 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-class PuzzleState: ObservableObject {
+@Observable
+class PuzzleState {
     
-    @Published var game = GameState()
-    @Published var options = OptionState(correct: Color(.sRGB, red: 195 / 255.0, green: 232 / 255.0, blue: 49 / 255.0, opacity: 0.5),
+    var game = GameState()
+    var options = OptionState(correct: Color(.sRGB, red: 195 / 255.0, green: 232 / 255.0, blue: 49 / 255.0, opacity: 0.5),
                                          empty: Color(.sRGB, red: 94 / 255.0, green: 94 / 255.0, blue: 94 / 255.0, opacity: 0.07),
                                          wrong: Color(.sRGB, red: 237 / 255.0, green: 66 / 255.0, blue: 69 / 255.0, opacity: 0.5),
                                          saveGameStatistics: false)
-    @Published var lastGestureTime: Date = Date()
-    @Published var time: Int = 0
+    var lastGestureTime: Date = Date()
+    var time: Int = 0
     private var timer: Timer?
     private var isPaused: Bool = false
     
@@ -27,7 +28,7 @@ class PuzzleState: ObservableObject {
     
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] _ in
-            if !self.isPaused {
+            if !self.isPaused && self.game.moves != 0 {
                 self.time += 1
             }
         }

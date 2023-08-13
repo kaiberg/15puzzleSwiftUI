@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Options: View {
-    @StateObject var state: PuzzleState
+    @Bindable var state: PuzzleState
     
     var body: some View {
         Form {
@@ -47,7 +47,7 @@ struct PreviewPiece: View {
     var body: some View {
         VStack {
             Text(text)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 0)
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 0).padding(.vertical)
             GamePiece(number: number, type: type, color: color)
         }
     }

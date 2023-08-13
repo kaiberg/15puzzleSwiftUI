@@ -11,10 +11,10 @@ enum Direction {
     case RIGHT
 }
 
-enum Difficulty: Int, Codable {
-    case hard = 3000
-    case medium = 2000
-    case easy = 1000
+enum Difficulty: String, Codable {
+    case hard = "hard"
+    case medium = "medium"
+    case easy = "easy"
 }
 
 enum PieceType {

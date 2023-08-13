@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct Game: View {
-    @StateObject var state: PuzzleState
-     @Environment(\.modelContext) private var context
+    @Bindable var state: PuzzleState
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         VStack {
@@ -24,7 +24,7 @@ struct Game: View {
             
             bottomControls
         }
-        .frame(width: 370, height: 500)
+        .frame(width: 345, height: 500)
         .alert("You Won!", isPresented: $state.game.hasWon, actions: {
             Button(
                 "Play again",
@@ -54,10 +54,14 @@ struct Game: View {
                 state.reset()
             } label: {
                 Text("New Game")
+                    .frame(minHeight: 50)
+                    .foregroundStyle(.black)
             }
+            .buttonStyle(.borderedProminent)
             .tint(state.options.empty)
+            
             .overlay(
-                RoundedRectangle(cornerRadius: 25)
+                RoundedRectangle(cornerRadius: 15)
                     .stroke(Color.gray, lineWidth: 2))
             Spacer()
             
@@ -85,16 +89,20 @@ struct Game: View {
         
     }
     var bottomControls: some View {
-        Button {
+        
+        
+        Button() {
             state.pause()
         } label: {
             Text("PAUSE")
+                .foregroundStyle(.black)
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
         }
+        .buttonStyle(.borderedProminent)
         .tint(state.options.empty)
         .overlay(
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.gray, lineWidth: 2))
     }
     
@@ -113,7 +121,7 @@ struct Game: View {
 
 struct GameRow: View {
     var pieces: [piece]
-    var options: OptionState
+    @Bindable var options: OptionState
     
     var body: some View {
         HStack {
@@ -129,49 +137,9 @@ struct GameRow: View {
     }
 }
 
-struct GamePiece: View {
-    var number: Int
-    var type: PieceType
-    var color: Color
-    
-    var body: some View {
-        if type == .empty { EmptyPiece(color: color)}
-        else {NumberPiece(number: number, color: color)}
-    }
-    
-}
-
 #Preview {
     //    NumberPiece(number: 2)
     Game(state: PuzzleState())
 }
 
-struct NumberPiece: View {
-    var number: Int
-    var color = Color.red
-    
-    var body: some View {
-        ZStack {
-            color
-                .frame(width: 80, height: 80)
-                .cornerRadius(20)
-            
-            Text(String(number))
-                .font(.extraLargeTitle)
-                .foregroundColor(.white)
-        }
-    }
-}
 
-struct EmptyPiece: View {
-    var color = Color.white
-    
-    var body: some View {
-        ZStack {
-            color
-                .frame(width: 80, height: 80)
-                .cornerRadius(20)
-            
-        }
-        
-    }}

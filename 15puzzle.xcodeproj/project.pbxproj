@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A006C172A88D15E00500778 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A006C162A88D15E00500778 /* Piece.swift */; };
 		2A5B7CDA2A7EAB7D00215CDE /* OptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B7CD92A7EAB7D00215CDE /* OptionState.swift */; };
 		2A5B7CDE2A7EB44900215CDE /* PuzzleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B7CDD2A7EB44900215CDE /* PuzzleState.swift */; };
 		2A5F8EB32A798264008B51FD /* _5puzzleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F8EB22A798264008B51FD /* _5puzzleApp.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A006C162A88D15E00500778 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		2A5B7CD92A7EAB7D00215CDE /* OptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionState.swift; sourceTree = "<group>"; };
 		2A5B7CDD2A7EB44900215CDE /* PuzzleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleState.swift; sourceTree = "<group>"; };
 		2A5F8EAF2A798264008B51FD /* 15puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 15puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 			children = (
 				2A5F8EB42A798264008B51FD /* ContentView.swift */,
 				2ACA02E52A7ACC8E002F2EF9 /* Views.swift */,
+				2A006C162A88D15E00500778 /* Piece.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			files = (
 				2ADAA9A92A86A0B3008D5F36 /* History.swift in Sources */,
 				2ACA02E62A7ACC8E002F2EF9 /* Views.swift in Sources */,
+				2A006C172A88D15E00500778 /* Piece.swift in Sources */,
 				2A5F8EB52A798264008B51FD /* ContentView.swift in Sources */,
 				2A5B7CDA2A7EAB7D00215CDE /* OptionState.swift in Sources */,
 				2A5F8EB32A798264008B51FD /* _5puzzleApp.swift in Sources */,
@@ -415,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -469,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -503,13 +507,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kaiberg.-5puzzle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Debug;
 		};
@@ -537,13 +541,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kaiberg.-5puzzle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 7;
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Release;
 		};
