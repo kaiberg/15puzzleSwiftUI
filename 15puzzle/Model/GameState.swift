@@ -11,10 +11,10 @@ enum Direction {
     case RIGHT
 }
 
-enum Difficulty {
-    case hard
-    case medium
-    case easy
+enum Difficulty: String, Codable {
+    case hard = "hard"
+    case medium = "medium"
+    case easy = "easy"
 }
 
 enum PieceType {
@@ -132,11 +132,11 @@ struct GameState {
 func difficultyToScrambleAmount(difficulty: Difficulty) -> Int {
     switch difficulty {
     case .easy:
-        return 70;
+        return 125;
     case .medium:
-        return 150;
-    case .hard:
         return 250;
+    case .hard:
+        return 500;
     }
 }
 

@@ -9,14 +9,17 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-struct OptionState {
+@Observable
+class OptionState {
     var correct: Color
     var empty: Color
     var wrong: Color
+    var saveGameStatistics: Bool
     
-    init(correct: Color, empty: Color, wrong: Color) {
+    init(correct: Color, empty: Color, wrong: Color, saveGameStatistics: Bool) {
         self.correct = correct
         self.empty = empty
         self.wrong = wrong
+        self.saveGameStatistics = saveGameStatistics
     }
 }

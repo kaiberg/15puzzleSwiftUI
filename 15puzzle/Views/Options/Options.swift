@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Options: View {
-    @StateObject var state: PuzzleState
+    @Bindable var state: PuzzleState
     
     var body: some View {
         Form {
@@ -18,9 +18,14 @@ struct Options: View {
                     Text("Medium").tag(Difficulty.medium)
                     Text("Hard").tag(Difficulty.hard)
                 }
+                
                 ColorPicker("Empty", selection: $state.options.empty)
                 ColorPicker("Correct", selection: $state.options.correct)
                 ColorPicker("Incorrect", selection: $state.options.wrong)
+                
+                Toggle(isOn: $state.options.saveGameStatistics) {
+                    Text("Save History")
+                }
             }
             Section(header: Text("Previews")) {
                 HStack{
@@ -31,9 +36,6 @@ struct Options: View {
             }
             
         }
-        
-        
-        
     }
 }
 
@@ -45,7 +47,7 @@ struct PreviewPiece: View {
     var body: some View {
         VStack {
             Text(text)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 0)
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 0).padding(.vertical)
             GamePiece(number: number, type: type, color: color)
         }
     }
